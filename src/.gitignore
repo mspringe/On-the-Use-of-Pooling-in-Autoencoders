@@ -1,0 +1,4 @@
+*.pth
+show_cases/*
+models/*
+logs/*

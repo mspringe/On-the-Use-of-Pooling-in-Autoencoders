@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    
+    <title>src.nn module &#8212; Autoencoders for Image Colorization - documentation</title>
+
+    <link rel="stylesheet" href="_static/material-icons.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/notosanscjkjp.css" type="text/css" />
+    <link rel="stylesheet" href="_static/roboto.css" type="text/css" />
+    <link rel="stylesheet" href="_static/material-design-lite-1.3.0/material.indigo-pink.min.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx_materialdesign_theme.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script src="_static/sphinx_materialdesign_theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="src.os_utils module" href="src.os_utils.html" />
+    <link rel="prev" title="src.eval module" href="src.eval.html" /> 
+  </head>
+<body>
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout--fixed-drawer"><header class="mdl-layout__header mdl-layout__header--waterfall ">
+    <div class="mdl-layout__header-row">
+        
+        <nav class="mdl-navigation breadcrumb">
+            <a class="mdl-navigation__link" href="src.html">src package</a><i class="material-icons">navigate_next</i>
+            <a class="mdl-navigation__link is-active">src.nn module</a>
+        </nav>
+        <div class="mdl-layout-spacer"></div>
+        <nav class="mdl-navigation">
+        
+<form class="form-inline pull-sm-right" action="search.html" method="get">
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable mdl-textfield--floating-label mdl-textfield--align-right">
+        <label id="quick-search-icon" class="mdl-button mdl-js-button mdl-button--icon"  for="waterfall-exp">
+            <i class="material-icons">search</i>
+        </label>
+        <div class="mdl-textfield__expandable-holder">
+          <input class="mdl-textfield__input" type="text" name="q"  id="waterfall-exp" placeholder="Search" />
+          <input type="hidden" name="check_keywords" value="yes" />
+          <input type="hidden" name="area" value="default" />
+        </div>
+      </div>
+      <div class="mdl-tooltip" data-mdl-for="quick-search-icon">
+      Quick search
+      </div>
+</form>
+        
+<a id="button-show-source"
+    class="mdl-button mdl-js-button mdl-button--icon"
+    href="_sources/src.nn.rst.txt" rel="nofollow">
+<i class="material-icons">code</i>
+</a>
+<div class="mdl-tooltip" data-mdl-for="button-show-source">
+Show Source
+</div>
+        </nav>
+    </div>
+    <div class="mdl-layout__header-row header-links">
+      <div class="mdl-layout-spacer"></div>
+      <nav class="mdl-navigation">
+      </nav>
+    </div>
+</header><header class="mdl-layout__drawer">
+    
+          <!-- Title -->
+      <span class="mdl-layout-title">
+          <a class="title" href="index.html">
+              <span class="title-text">
+                  Autoencoders for Image Colorization
+              </span>
+          </a>
+      </span>
+    
+    
+      <div class="globaltoc">
+        <span class="mdl-layout-title toc">Table Of Contents</span>
+        
+        
+            
+            <nav class="mdl-navigation">
+                <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="src.html">src package</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="src.data.html">src.data module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src.eval.html">src.eval module</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">src.nn module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src.os_utils.html">src.os_utils module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src.show_case.html">src.show_case module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src.training.html">src.training module</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        
+        </div>
+    
+</header>
+        <main class="mdl-layout__content" tabIndex="0">
+<header class="mdl-layout__drawer">
+    
+          <!-- Title -->
+      <span class="mdl-layout-title">
+          <a class="title" href="index.html">
+              <span class="title-text">
+                  Autoencoders for Image Colorization
+              </span>
+          </a>
+      </span>
+    
+    
+      <div class="globaltoc">
+        <span class="mdl-layout-title toc">Table Of Contents</span>
+        
+        
+            
+            <nav class="mdl-navigation">
+                <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="src.html">src package</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="src.data.html">src.data module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src.eval.html">src.eval module</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">src.nn module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src.os_utils.html">src.os_utils module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src.show_case.html">src.show_case module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src.training.html">src.training module</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        
+        </div>
+    
+</header>
+
+    <div class="document">
+        <div class="page-content">
+        
+  <div class="section" id="module-src.nn">
+<span id="src-nn-module"></span><h1>src.nn module<a class="headerlink" href="#module-src.nn" title="Permalink to this headline">¶</a></h1>
+<p>This module provides a CNN auto-encoder.
+The model can be adjusted, such that 0-3 pooling operations will be performed.</p>
+<dl class="py class">
+<dt id="src.nn.MaxGridPool">
+<em class="property">class </em><code class="sig-prename descclassname">src.nn.</code><code class="sig-name descname">MaxGridPool</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">s_in</span></em>, <em class="sig-param"><span class="n">n_bins</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/src/nn.html#MaxGridPool"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#src.nn.MaxGridPool" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
+<p>This class enables max pooling relative to the featuremaps size.
+Its counterpart is the <a class="reference internal" href="#src.nn.UpsampleGrid" title="src.nn.UpsampleGrid"><code class="xref py py-class docutils literal notranslate"><span class="pre">src.nn.UpsampleGrid</span></code></a> class.</p>
+<dl class="py method">
+<dt id="src.nn.MaxGridPool.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">s_in</span></em>, <em class="sig-param"><span class="n">n_bins</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/src/nn.html#MaxGridPool.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#src.nn.MaxGridPool.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>s_in</strong> -- width/ height of feature map</p></li>
+<li><p><strong>n_bin</strong> -- total number of bins to be extracted (has to be quadratic)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="src.nn.MaxGridPool.forward">
+<code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/src/nn.html#MaxGridPool.forward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#src.nn.MaxGridPool.forward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Max pooling relative to feature map height and width.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>x</strong> -- batch of feature maps</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>feature maps reduced to the number of bins defined at <a class="reference internal" href="#src.nn.MaxGridPool.__init__" title="src.nn.MaxGridPool.__init__"><code class="xref py py-func docutils literal notranslate"><span class="pre">src.nn.MaxGridPool.__init__()</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="src.nn.MaxGridPool.training">
+<code class="sig-name descname">training</code><em class="property">: bool</em><a class="headerlink" href="#src.nn.MaxGridPool.training" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="src.nn.UpsampleGrid">
+<em class="property">class </em><code class="sig-prename descclassname">src.nn.</code><code class="sig-name descname">UpsampleGrid</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">s_in</span></em>, <em class="sig-param"><span class="n">n_bin</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/src/nn.html#UpsampleGrid"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#src.nn.UpsampleGrid" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
+<p>This class enables upsampling relative to the featuremaps size.
+Its counterpart is the <a class="reference internal" href="#src.nn.MaxGridPool" title="src.nn.MaxGridPool"><code class="xref py py-class docutils literal notranslate"><span class="pre">src.nn.MaxGridPool</span></code></a> class.</p>
+<dl class="py method">
+<dt id="src.nn.UpsampleGrid.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">s_in</span></em>, <em class="sig-param"><span class="n">n_bin</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/src/nn.html#UpsampleGrid.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#src.nn.UpsampleGrid.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>s_in</strong> -- width/ height of initial feature map</p></li>
+<li><p><strong>n_bin</strong> -- total number of previously extracted bins (has to be quadratic)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="src.nn.UpsampleGrid.forward">
+<code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/src/nn.html#UpsampleGrid.forward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#src.nn.UpsampleGrid.forward" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>x</strong> -- batcg of feature maps</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>upsampled feature maps</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="src.nn.UpsampleGrid.training">
+<code class="sig-name descname">training</code><em class="property">: bool</em><a class="headerlink" href="#src.nn.UpsampleGrid.training" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="src.nn.Reshape">
+<em class="property">class </em><code class="sig-prename descclassname">src.nn.</code><code class="sig-name descname">Reshape</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">shape_out</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/src/nn.html#Reshape"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#src.nn.Reshape" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
+<p>This class adapts the reshape operation to the nn.Module interface.</p>
+<dl class="py method">
+<dt id="src.nn.Reshape.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">shape_out</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/src/nn.html#Reshape.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#src.nn.Reshape.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>shape_out</strong> -- new shape of tensors</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="src.nn.Reshape.forward">
+<code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/src/nn.html#Reshape.forward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#src.nn.Reshape.forward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reshaping the tensor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>x</strong> -- any tensor that matches the size of the initialized shape</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>reshaped tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="src.nn.Reshape.training">
+<code class="sig-name descname">training</code><em class="property">: bool</em><a class="headerlink" href="#src.nn.Reshape.training" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="src.nn.ConvNet">
+<em class="property">class </em><code class="sig-prename descclassname">src.nn.</code><code class="sig-name descname">ConvNet</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">c_in</span><span class="o">=</span><span class="default_value">1</span></em>, <em class="sig-param"><span class="n">c_out</span><span class="o">=</span><span class="default_value">1</span></em>, <em class="sig-param"><span class="n">img_h</span><span class="o">=</span><span class="default_value">64</span></em>, <em class="sig-param"><span class="n">img_w</span><span class="o">=</span><span class="default_value">64</span></em>, <em class="sig-param"><span class="n">act</span><span class="o">=</span><span class="default_value">'LReLU'</span></em>, <em class="sig-param"><span class="n">n_pooling</span><span class="o">=</span><span class="default_value">0</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/src/nn.html#ConvNet"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#src.nn.ConvNet" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
+<p>This class defines the auto-encoder model. Up to 3 pooling operations can be performed.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Increasing the number of pooling operations will increase the depth of encoder and decoder networks.</p>
+</div>
+<dl class="py method">
+<dt id="src.nn.ConvNet.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">c_in</span><span class="o">=</span><span class="default_value">1</span></em>, <em class="sig-param"><span class="n">c_out</span><span class="o">=</span><span class="default_value">1</span></em>, <em class="sig-param"><span class="n">img_h</span><span class="o">=</span><span class="default_value">64</span></em>, <em class="sig-param"><span class="n">img_w</span><span class="o">=</span><span class="default_value">64</span></em>, <em class="sig-param"><span class="n">act</span><span class="o">=</span><span class="default_value">'LReLU'</span></em>, <em class="sig-param"><span class="n">n_pooling</span><span class="o">=</span><span class="default_value">0</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/src/nn.html#ConvNet.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#src.nn.ConvNet.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>c_in</strong> -- number of input channels/ feature maps</p></li>
+<li><p><strong>c_out</strong> -- number of ouput channels/ feature maps</p></li>
+<li><p><strong>img_h</strong> -- height of images</p></li>
+<li><p><strong>img_w</strong> -- width of images</p></li>
+<li><p><strong>act</strong> -- string indication whether to use LReLU or ReLU for hidden layers</p></li>
+<li><p><strong>n_pooling</strong> -- number of pooling operations that will be performed</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="src.nn.ConvNet.conv">
+<code class="sig-name descname">conv</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/src/nn.html#ConvNet.conv"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#src.nn.ConvNet.conv" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convolution (/ cross correlation) part of the encoder.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>x</strong> -- input image</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>convolved (/ cross correlated) feature maps</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="src.nn.ConvNet.deconv">
+<code class="sig-name descname">deconv</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/src/nn.html#ConvNet.deconv"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#src.nn.ConvNet.deconv" title="Permalink to this definition">¶</a></dt>
+<dd><p>The transposed convolution (/ cross correlation).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>x</strong> -- neural code</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>feature maps for the output layer</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="src.nn.ConvNet.encode">
+<code class="sig-name descname">encode</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/src/nn.html#ConvNet.encode"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#src.nn.ConvNet.encode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Encoding the input image to a neural code.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>x</strong> -- input image</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>neural code</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="src.nn.ConvNet.decode">
+<code class="sig-name descname">decode</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/src/nn.html#ConvNet.decode"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#src.nn.ConvNet.decode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Decoding the the input image from a neural code.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>x</strong> -- neural code</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>feature maps for the output layer</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="src.nn.ConvNet.forward">
+<code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/src/nn.html#ConvNet.forward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#src.nn.ConvNet.forward" title="Permalink to this definition">¶</a></dt>
+<dd><p>The models forward pass, embodying encoding, decoding and final activations of the output layer.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>x</strong> -- input image</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>predicted image</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="src.nn.ConvNet.training">
+<code class="sig-name descname">training</code><em class="property">: bool</em><a class="headerlink" href="#src.nn.ConvNet.training" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+        </div>
+        <div class="side-doc-outline">
+            <div class="side-doc-outline--content"> 
+            </div>
+        </div>
+
+      <div class="clearer"></div>
+    </div><div class="pagenation">
+     <a id="button-prev" href="src.eval.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
+         <i class="pagenation-arrow-L material-icons">arrow_back</i>
+         <div class="pagenation-text">
+            <span class="pagenation-direction">Previous</span>
+            <div>src.eval module</div>
+         </div>
+     </a>
+     <a id="button-next" href="src.os_utils.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
+        <i class="pagenation-arrow-R material-icons">arrow_forward</i>
+        <div class="pagenation-text">
+            <span class="pagenation-direction">Next</span>
+            <div>src.os_utils module</div>
+        </div>
+     </a>
+  </div>
+        <footer class="mdl-mini-footer">
+    <div class="mdl-mini-footer__left-section">
+      <div class="mdl-logo">Autoencoders for Image Colorization</div>
+      <div>
+        
+        <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="src.html">src package</a></li>
+</ul>
+
+      </div>
+    </div>
+
+    <div class="mdl-mini-footer__right-section">
+        <div>&copy; Copyright 2020, Maximilian Springenberg.</div>
+      <div>Generated by <a href="http://sphinx.pocoo.org/">Sphinx</a> 3.2.1 using <a href="https://github.com/myyasuda/sphinx_materialdesign_theme">sphinx_materialdesign_theme</a>.</div>
+    </div>
+</footer>
+        </main>
+    </div>
+  </body>
+</html>

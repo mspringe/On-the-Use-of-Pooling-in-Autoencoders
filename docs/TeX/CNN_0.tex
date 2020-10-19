@@ -1,0 +1,97 @@
+\documentclass[tikz, margin=0.5cm]{standalone}
+\usepackage{tikz}
+\tikzstyle{legend}=[rectangle, draw=black, minimum width=1em, minimum height=1em, text width=1em, inner xsep=0]
+
+\newcommand{\ConvLayerWrap}[8]{ % arguments: x_center, y_center, z_center, img_height, img_width, conv_channels, colour, title
+	% top
+	\draw[fill=#7, color=#7, opacity=0.5] 
+		(#1,			#2+0.5*#4,	#3-0.5*#5) -- 
+		(#1,			#2+0.5*#4,	#3+0.5*#5) -- 
+		(#1+#6,	#2+0.5*#4,	#3+0.5*#5) -- 
+		(#1+#6,	#2+0.5*#4,	#3-0.5*#5) -- 
+		(#1,			#2+0.5*#4,	#3-0.5*#5); 
+	% bottom
+	\draw[fill=#7, color=#7, opacity=0.5] 
+		(#1,			#2-0.5*#4,	#3-0.5*#5) -- 
+		(#1,			#2-0.5*#4,	#3+0.5*#5) -- 
+		(#1+#6,	#2-0.5*#4,	#3+0.5*#5) -- 
+		(#1+#6,	#2-0.5*#4,	#3-0.5*#5) -- 
+		(#1,			#2-0.5*#4,	#3-0.5*#5); 
+	% front 
+	\draw[fill=#7, color=#7, opacity=0.5] 
+		(#1,			#2-0.5*#4,	#3-0.5*#5) -- 
+		(#1,			#2+0.5*#4,	#3-0.5*#5) -- 
+		(#1+#6,	#2+0.5*#4,	#3-0.5*#5) -- 
+		(#1+#6,	#2-0.5*#4,	#3-0.5*#5) -- 
+		(#1,			#2-0.5*#4,	#3-0.5*#5); 
+	% back
+	\draw[fill=#7, color=#7, opacity=0.5] 
+		(#1,			#2-0.5*#4,	#3+0.5*#5) -- 
+		(#1,			#2+0.5*#4,	#3+0.5*#5) -- 
+		(#1+#6,	#2+0.5*#4,	#3+0.5*#5) -- 
+		(#1+#6,	#2-0.5*#4,	#3+0.5*#5) -- 
+		(#1,			#2-0.5*#4,	#3+0.5*#5); 
+	% left side
+	\draw[fill=#7, color=#7] 
+		(#1,	#2-0.5*#4,	#3-0.5*#5) -- 
+		(#1,	#2-0.5*#4,	#3+0.5*#5) -- 
+		(#1,	#2+0.5*#4,	#3+0.5*#5) -- 
+		(#1,	#2+0.5*#4,	#3-0.5*#5) -- 
+		(#1,	#2-0.5*#4,	#3-0.5*#5);
+	% right side
+	\draw[fill=#7, draw=black, dashed] 
+		(#1+#6,	#2-0.5*#4,	#3-0.5*#5) -- 
+		(#1+#6,	#2-0.5*#4,	#3+0.5*#5) -- 
+		(#1+#6,	#2+0.5*#4,	#3+0.5*#5) -- 
+		(#1+#6,	#2+0.5*#4,	#3-0.5*#5) -- 
+		(#1+#6,	#2-0.5*#4,	#3-0.5*#5); 
+	% missing outlines
+	% visibles
+	\draw[draw=black, dashed] 
+		(#1,			#2-0.5*#4,	#3-0.5*#5) -- 
+		(#1,			#2+0.5*#4,	#3-0.5*#5) --
+		(#1,			#2+0.5*#4,	#3+0.5*#5) -- 
+		(#1+#6,	#2+0.5*#4,	#3+0.5*#5);
+	\draw[draw=black, dashed]
+		(#1,			#2-0.5*#4,	#3-0.5*#5) -- 
+		(#1+#6,	#2-0.5*#4,	#3-0.5*#5);
+	\draw[draw=black, dashed]
+		(#1,			#2+0.5*#4,	#3-0.5*#5) -- 
+		(#1+#6,	#2+0.5*#4,	#3-0.5*#5);
+	% hidden
+	\draw[draw=black, dashed, opacity=0.5]
+		(#1,			#2-0.5*#4,	#3-0.5*#5) -- 
+		(#1,			#2-0.5*#4,	#3+0.5*#5)--
+		(#1,			#2+0.5*#4,	#3+0.5*#5);
+	\draw[draw=black, dashed, opacity=0.5]
+		(#1,			#2-0.5*#4,	#3+0.5*#5) -- 
+		(#1+#6,	#2-0.5*#4,	#3+0.5*#5);
+	\node[anchor=north] at (#1+0.5*#6, #2-0.5*#4-1, #3-0.5*#5) {#8};
+}
+\newcommand{\ConvLayer}[7]{% arguments: x_center, y_center, z_center, img_height, img_width, conv_channels, colour
+	\ConvLayerWrap{#1}{#2}{#3}{#4}{#5}{#6}{#7}{#6}
+}
+\newcommand{\FCLayer}[5]{ % arguments: x_center, y_center, z_center, n_neurons, colour
+	\ConvLayerWrap{#1}{#2}{#3}{1}{0.05*#4}{8}{#5}{#4}
+}
+\newcommand{\legendItm}[5]{ % arguments:  x_center, y_center, z_center, text, color
+	\node[legend, fill=#5, label=right:{#4}] at (#1, #2, #3) {};
+}
+
+\begin{document}
+
+\begin{tikzpicture}[x={(0.1mm,0mm)}, y={(0mm,1mm)}, z={(0.5mm,0.5mm)}]
+
+\ConvLayer{40}{0}{0}{32}{32}{64}{blue!30!green!10}
+\ConvLayer{184}{0}{0}{32}{32}{128}{blue!30!green!10}
+\ConvLayer{392}{0}{0}{32}{32}{128}{blue!10}
+\ConvLayer{600}{0}{0}{32}{32}{64}{blue!10}
+\ConvLayer{744}{0}{0}{32}{32}{2}{red!10}
+
+\legendItm{0}   {-42}{0}{$3\times3$ Conv + ReLU}{blue!30!green!10}
+\legendItm{0}   {-52}{0}{$2\times2$ Max Pooling}{yellow!90!green!25}
+\legendItm{500}{-42}{0}{$2\times2$ Upsampling}{orange!15}
+\legendItm{500}{-52}{0}{$3\times3$ Transposed Conv + ReLU}{blue!10}
+\legendItm{1000}{-42}{0}{$3\times3$ Transposed Conv + HardTanh}{red!10}
+\end{tikzpicture}
+\end{document}

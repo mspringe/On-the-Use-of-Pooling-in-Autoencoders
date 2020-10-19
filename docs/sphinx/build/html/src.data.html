@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    
+    <title>src.data module &#8212; Autoencoders for Image Colorization - documentation</title>
+
+    <link rel="stylesheet" href="_static/material-icons.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/notosanscjkjp.css" type="text/css" />
+    <link rel="stylesheet" href="_static/roboto.css" type="text/css" />
+    <link rel="stylesheet" href="_static/material-design-lite-1.3.0/material.indigo-pink.min.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx_materialdesign_theme.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script src="_static/sphinx_materialdesign_theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="src.eval module" href="src.eval.html" />
+    <link rel="prev" title="src package" href="src.html" /> 
+  </head>
+<body>
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout--fixed-drawer"><header class="mdl-layout__header mdl-layout__header--waterfall ">
+    <div class="mdl-layout__header-row">
+        
+        <nav class="mdl-navigation breadcrumb">
+            <a class="mdl-navigation__link" href="src.html">src package</a><i class="material-icons">navigate_next</i>
+            <a class="mdl-navigation__link is-active">src.data module</a>
+        </nav>
+        <div class="mdl-layout-spacer"></div>
+        <nav class="mdl-navigation">
+        
+<form class="form-inline pull-sm-right" action="search.html" method="get">
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable mdl-textfield--floating-label mdl-textfield--align-right">
+        <label id="quick-search-icon" class="mdl-button mdl-js-button mdl-button--icon"  for="waterfall-exp">
+            <i class="material-icons">search</i>
+        </label>
+        <div class="mdl-textfield__expandable-holder">
+          <input class="mdl-textfield__input" type="text" name="q"  id="waterfall-exp" placeholder="Search" />
+          <input type="hidden" name="check_keywords" value="yes" />
+          <input type="hidden" name="area" value="default" />
+        </div>
+      </div>
+      <div class="mdl-tooltip" data-mdl-for="quick-search-icon">
+      Quick search
+      </div>
+</form>
+        
+<a id="button-show-source"
+    class="mdl-button mdl-js-button mdl-button--icon"
+    href="_sources/src.data.rst.txt" rel="nofollow">
+<i class="material-icons">code</i>
+</a>
+<div class="mdl-tooltip" data-mdl-for="button-show-source">
+Show Source
+</div>
+        </nav>
+    </div>
+    <div class="mdl-layout__header-row header-links">
+      <div class="mdl-layout-spacer"></div>
+      <nav class="mdl-navigation">
+      </nav>
+    </div>
+</header><header class="mdl-layout__drawer">
+    
+          <!-- Title -->
+      <span class="mdl-layout-title">
+          <a class="title" href="index.html">
+              <span class="title-text">
+                  Autoencoders for Image Colorization
+              </span>
+          </a>
+      </span>
+    
+    
+      <div class="globaltoc">
+        <span class="mdl-layout-title toc">Table Of Contents</span>
+        
+        
+            
+            <nav class="mdl-navigation">
+                <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="src.html">src package</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">src.data module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src.eval.html">src.eval module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src.nn.html">src.nn module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src.os_utils.html">src.os_utils module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src.show_case.html">src.show_case module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src.training.html">src.training module</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        
+        </div>
+    
+</header>
+        <main class="mdl-layout__content" tabIndex="0">
+<header class="mdl-layout__drawer">
+    
+          <!-- Title -->
+      <span class="mdl-layout-title">
+          <a class="title" href="index.html">
+              <span class="title-text">
+                  Autoencoders for Image Colorization
+              </span>
+          </a>
+      </span>
+    
+    
+      <div class="globaltoc">
+        <span class="mdl-layout-title toc">Table Of Contents</span>
+        
+        
+            
+            <nav class="mdl-navigation">
+                <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="src.html">src package</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">src.data module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src.eval.html">src.eval module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src.nn.html">src.nn module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src.os_utils.html">src.os_utils module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src.show_case.html">src.show_case module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src.training.html">src.training module</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        
+        </div>
+    
+</header>
+
+    <div class="document">
+        <div class="page-content">
+        
+  <div class="section" id="module-src.data">
+<span id="src-data-module"></span><h1>src.data module<a class="headerlink" href="#module-src.data" title="Permalink to this headline">¶</a></h1>
+<p>This module provides data laoder, that stores all data in RAM.
+This approach is worthwhile for smaller datasets, as it bypasses an I/O bottleneck, 
+but it is ill advised to use the data loader for data sets spanning more than a couple of Gb.</p>
+<dl class="py class">
+<dt id="src.data.RAMDataSet">
+<em class="property">class </em><code class="sig-prename descclassname">src.data.</code><code class="sig-name descname">RAMDataSet</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">path</span></em>, <em class="sig-param"><span class="n">height</span></em>, <em class="sig-param"><span class="n">width</span></em>, <em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="n">flatten</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">inv</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">suffix</span><span class="o">=</span><span class="default_value">'.png'</span></em>, <em class="sig-param"><span class="n">norm_light</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">preload</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">black_white</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/src/data.html#RAMDataSet"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#src.data.RAMDataSet" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.utils.data.dataset.Dataset</span></code></p>
+<p>Dataset that loads all images into RAM, not recommendable for anything bigger than a couple of Gb</p>
+<dl class="py method">
+<dt id="src.data.RAMDataSet.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">path</span></em>, <em class="sig-param"><span class="n">height</span></em>, <em class="sig-param"><span class="n">width</span></em>, <em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="n">flatten</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">inv</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">suffix</span><span class="o">=</span><span class="default_value">'.png'</span></em>, <em class="sig-param"><span class="n">norm_light</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">preload</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">black_white</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/src/data.html#RAMDataSet.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#src.data.RAMDataSet.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path</strong> -- path to images</p></li>
+<li><p><strong>height</strong> -- preffered height</p></li>
+<li><p><strong>width</strong> -- preffered width</p></li>
+<li><p><strong>args</strong> -- other arguments for the super-class <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.utils.data.Dataset</span></code></p></li>
+<li><p><strong>flatten</strong> -- indicates whether to flatten the images</p></li>
+<li><p><strong>inv</strong> -- indicates whether to invert the images</p></li>
+<li><p><strong>suffix</strong> -- file ending of images, e.g. '.png'</p></li>
+<li><p><strong>norm_light</strong> -- indicates whether to normalize lighting</p></li>
+<li><p><strong>preload</strong> -- indicates imidiate preloading of data</p></li>
+<li><p><strong>black_white</strong> -- indicates whether to reduce batch and targets to black and white images</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="src.data.RAMDataSet.load_all">
+<code class="sig-name descname">load_all</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/src/data.html#RAMDataSet.load_all"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#src.data.RAMDataSet.load_all" title="Permalink to this definition">¶</a></dt>
+<dd><p>Loading all images into RAM.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="src.data.RAMDataSetIter">
+<em class="property">class </em><code class="sig-prename descclassname">src.data.</code><code class="sig-name descname">RAMDataSetIter</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">dset</span></em>, <em class="sig-param"><span class="n">shuffle</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">s_batch</span><span class="o">=</span><span class="default_value">16</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/src/data.html#RAMDataSetIter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#src.data.RAMDataSetIter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Iterator for RAMDataSet, does not need reinitialization after an epoch has finished (can be reset).</p>
+<dl class="py method">
+<dt id="src.data.RAMDataSetIter.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">dset</span></em>, <em class="sig-param"><span class="n">shuffle</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">s_batch</span><span class="o">=</span><span class="default_value">16</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/src/data.html#RAMDataSetIter.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#src.data.RAMDataSetIter.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dset</strong> -- data set to iterate on</p></li>
+<li><p><strong>shuffle</strong> -- indicates whether to shuffle the data</p></li>
+<li><p><strong>s_batch</strong> -- size of batch</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="src.data.RAMDataSetIter.next">
+<code class="sig-name descname">next</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/src/data.html#RAMDataSetIter.next"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#src.data.RAMDataSetIter.next" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>next batch and targets from dataset</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="src.data.RAMDataSetIter.reset">
+<code class="sig-name descname">reset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/src/data.html#RAMDataSetIter.reset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#src.data.RAMDataSetIter.reset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Resetting the iterator and shuffling again, if shuffling was specified.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+        </div>
+        <div class="side-doc-outline">
+            <div class="side-doc-outline--content"> 
+            </div>
+        </div>
+
+      <div class="clearer"></div>
+    </div><div class="pagenation">
+     <a id="button-prev" href="src.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
+         <i class="pagenation-arrow-L material-icons">arrow_back</i>
+         <div class="pagenation-text">
+            <span class="pagenation-direction">Previous</span>
+            <div>src package</div>
+         </div>
+     </a>
+     <a id="button-next" href="src.eval.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
+        <i class="pagenation-arrow-R material-icons">arrow_forward</i>
+        <div class="pagenation-text">
+            <span class="pagenation-direction">Next</span>
+            <div>src.eval module</div>
+        </div>
+     </a>
+  </div>
+        <footer class="mdl-mini-footer">
+    <div class="mdl-mini-footer__left-section">
+      <div class="mdl-logo">Autoencoders for Image Colorization</div>
+      <div>
+        
+        <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="src.html">src package</a></li>
+</ul>
+
+      </div>
+    </div>
+
+    <div class="mdl-mini-footer__right-section">
+        <div>&copy; Copyright 2020, Maximilian Springenberg.</div>
+      <div>Generated by <a href="http://sphinx.pocoo.org/">Sphinx</a> 3.2.1 using <a href="https://github.com/myyasuda/sphinx_materialdesign_theme">sphinx_materialdesign_theme</a>.</div>
+    </div>
+</footer>
+        </main>
+    </div>
+  </body>
+</html>
