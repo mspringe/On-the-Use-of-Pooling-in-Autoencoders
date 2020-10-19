@@ -2,3 +2,5 @@
 show_cases/*
 models/*
 logs/*
+__pycache__/*
+
