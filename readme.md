@@ -11,7 +11,7 @@ code (e.g. feature maps or a vector) that usually is smaller than the original i
 reconstructs the target based on the neural code.
 By forcing information to pass through the bottleneck, one can hope that only relevant information is passed between
 the encoder and decoder networks and noise gets cancelled out.
-Therefore autoencoders can result in models, that generalize well.
+Therefore autoencoders can result in models that generalize well.
 
 ## Motivation
 
@@ -24,11 +24,12 @@ discussed in the following.
 
 ## Model Configurations 
 
-With the residing code, I have evaluated different configurations of a CNN autoencoder for image colorization.
-In particular, I have considered up too 3 pooling and upsampling layers in my models, reducing the feature map size
+With the residing code, I have evaluated different configurations of a CNN autoencoder, implemented in pytorch, 
+for image colorization.
+In particular, I have considered up to 3 pooling and upsampling layers in my models, reducing the feature map size
 and therefore tightening the bottleneck with each pooling operation.
 All models were constructed with regression in mind, hence the HardTanh output layer, rather than a sigmoid.
-Also Batch-Normalization was applied after each Convolution- and Transposed Convolution Layer.
+Also batch normalization was applied after each convolution- and transposed convolution layer.
 
 ### Starting With No Pooling:
 
@@ -62,7 +63,7 @@ Given a 128 by 128 pixel image, this model has a bottleneck of 16 by 16 feature 
 
 The task of image colorization was carried out on 769 images of daisies, obtained from 
 [kaggle](https://www.kaggle.com/alxmamaev/flowers-recognition).
-As image representation, I have chosen the CIE Lab color space, that encodes images in 3 channels.
+As image representation, I have chosen the CIE Lab color space, which encodes images in 3 channels.
 The L channel is used for lightness, the a channel for differentiation between green and red and the b channel for 
 differentiation between blue and yellow.
 
@@ -72,8 +73,9 @@ All models were trained with a batch size of 16 on a test split containing 576 I
 The L1 loss, i.e. mean of pairwise absolute differences between the colour channels, was used as loss during training.
 Adam was chosen as the method for optimization steps.
 
-All models were trained for 100000 iterations, the progress is visualized in the following plots.
-Additional to the L1 loss over time (/ steps), a sample image and its prediction is depicted.
+All models were trained for 100,000 iterations.
+The progress is visualized in the following plots.
+Additional to the L1 loss over time (/ steps), a sample image and its prediction is depicted every 5,000 steps.
 The top row contains the original colour image, as well as its a and b channels, the bottom row the predicted 
 colour image, as well as corresponding a and b channels.
 
@@ -97,12 +99,13 @@ colour image, as well as corresponding a and b channels.
 
 Evaluation was carried out on a test split, containing 193 images.
 For evaluation I have considered upper bounds on the pairwise absolute distances of respective a and b channels.
-The accuracy is defined by the mean percentage of channel values, that have a smaller absolute difference to their true
-counterparts than the respective upper bound.
+The accuracy is defined by the mean over the test data of the percentage of predicted channel values, 
+that have a smaller absolute difference to their true counterparts in an images Lab representation than the respective 
+upper bound.
 
 ![](docs/figures/hst.png)
 
-The results show that while the model with 3 pooling layers does well on small upper bounds, it also does worse on larger 
+The results show that, while the model with 3 pooling layers does well on small upper bounds, it also does worse on larger 
 upper bounds.
 Vice versa for the model with no pooling layers. 
 A possible explanation could be, that the model with no pooling layers focuses on details, i.e. high frequencies in the
@@ -154,11 +157,11 @@ detail.
 Whether to pool and how much is task specific.
 
 On the presented dataset the model with 1 pooling layer performs best, which might suggest that autoencoders with little
-pooling may be a good choice for image colorization, as they seem to balanced the conflict of generalizing well and 
+pooling may be a good choice for image colorization, as they seem to balance the conflict of generalizing well and 
 maintaining details in the colour channels.
 
 Also it might be worthwhile considering a mixture of models, some focusing on high frequency details in the image
-and some focusing on the middle- and background object (different models applied to different segments of the image).
+and some focusing on the middle- and background objects (different models applied to different segments of the image).
 With that approach, one could take advantage of the generalization obtained from autoencoders with more pooling for the
 colorization of the background segments.
 
